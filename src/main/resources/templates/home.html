@@ -5,9 +5,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
 	<table border="1">
 		<tr>
 			<th>No.</th>
@@ -17,6 +21,7 @@
 			<th>Tanggal Lahir</th>
 			<th>Jenis Kelamin</th>
 			<th>Spesialisasi</th>
+			<th></th>
 		</tr>
 		<th:block th:each="pustakawan, iterationStatus : ${daftarPustakawan}">
 			<tr>
@@ -41,13 +46,23 @@
 							<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
 								th:text="${spesialisasi.nama} + ','"></span>
 							<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
-								th:text="${spesialisasi.nama}"></span>
+								th:text="${spesialisasi.nama}">
+							</span>
 						</span>
 					</span>
+				</td>
+				<td>
+					<a th:href="@{'/'}">Jadwal</a>
+					<a th:href="@{'/pustakawan/update/' + ${pustakawan.id}}">Ubah</a>
+					<a th:href="@{'/pustakawan/delete/' + ${pustakawan.id}}">Hapus</a>
 				</td>
 			</tr>
 		</th:block>
 	</table>
+	<br>
+	<a th:href="@{'/pustakawan/tambah'}">
+		<button type="button" class="btn btn-primary">Tambah Pustakawan</button>
+	</a>
 </body>
 
 </html>
