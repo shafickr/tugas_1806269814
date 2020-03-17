@@ -8,3 +8,7 @@
 h5 {
 	padding: 20px 0 10px;
 }
+
+table tr th {
+	padding: 0 10px;
+}
