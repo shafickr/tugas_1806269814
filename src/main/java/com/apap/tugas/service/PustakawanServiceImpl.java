@@ -33,4 +33,9 @@ public class PustakawanServiceImpl implements PustakawanService {
 	public List<SpesialisasiModel> getAllSpesialisasi() {
 		return spesialisasiDb.findAll();
 	}
+
+	@Override
+	public PustakawanModel getPustakawanByNip(String nip) {
+		return pustakawanDb.findByNip(nip);
+	}
 }

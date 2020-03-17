@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PustakawanController {
@@ -21,18 +22,14 @@ public class PustakawanController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	private String home(Model model) {
 		List<PustakawanModel> daftarPustakawan = pustakawanService.getAllPustakawan();
-		// for (int i = 0; i < daftarPustakawan.size(); i++) {
-		// if (daftarPustakawan.get(i).getSpesialisasiPustakawan().size() == 0) {
-		// daftarPustakawan.get(i).setSpesialisasiPustakawan('-');
-		// } else if (daftarPustakawan.get(i).getSpesialisasiPustakawan().size() > 1) {
-		// StringJoiner joiner = new StringJoiner(",\n");
-		// daftarPustakawan.get(i).getSpesialisasiPustakawan().forEach(spesialisasi -> {
-		// joiner.add(spesialisasi.getNama().toString());
-		// });
-		// daftarPustakawan.get(i).setSpesialisasiPustakawan(joiner);
-		// }
-		// }
 		model.addAttribute("daftarPustakawan", daftarPustakawan);
 		return "home";
+	}
+
+	@RequestMapping(value = "/pustakawan", method = RequestMethod.GET)
+	public String viewPustakawan(@RequestParam(value = "nip") String nip, Model model) {
+		PustakawanModel pustakawan = pustakawanService.getPustakawanByNip(nip);
+		model.addAttribute("pustakawan", pustakawan);
+		return "view-pustakawan";
 	}
 }

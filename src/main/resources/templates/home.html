@@ -21,7 +21,7 @@
 		<th:block th:each="pustakawan, iterationStatus : ${daftarPustakawan}">
 			<tr>
 				<td th:text="${iterationStatus.count}"></td>
-				<td th:text="${pustakawan.nama}"></td>
+				<td><a th:href="@{'/pustakawan?nip=' + ${pustakawan.nip}}" th:text="${pustakawan.nama}"></a></td>
 				<td th:text="${pustakawan.nip}"></td>
 				<td th:text="${pustakawan.tempat_lahir}"></td>
 				<td th:text="${pustakawan.tanggal_lahir}"></td>
@@ -37,7 +37,7 @@
 						<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
 							<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
 								th:text="${spesialisasi.nama} + ','"></span>
-							<span th:if="${spesialisasiStat.index == pustakawan.spesialisasiPustakawan.size()-1}"
+							<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
 								th:text="${spesialisasi.nama}"></span>
 						</span>
 					</span>
