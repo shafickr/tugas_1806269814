@@ -51,10 +51,16 @@
 						</span>
 					</span>
 				</td>
-				<td>
-					<a th:href="@{'/'}">Jadwal</a>
-					<a th:href="@{'/pustakawan/update/' + ${pustakawan.id}}">Ubah</a>
-					<a th:href="@{'/pustakawan/delete/' + ${pustakawan.id}}">Hapus</a>
+				<td style="padding: 5px;">
+					<a th:href="@{'/'}">
+						<button type="button" class="btn btn-info">Jadwal</button>
+					</a>
+					<a th:href="@{'/pustakawan/update/' + ${pustakawan.id}}">
+						<button type="button" class="btn btn-dark">Ubah</button>
+					</a>
+					<a th:href="@{'/pustakawan/delete/' + ${pustakawan.id}}">
+						<button type="button" class="btn btn-danger">Hapus</button>
+					</a>
 				</td>
 			</tr>
 		</th:block>
