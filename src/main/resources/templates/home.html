@@ -27,8 +27,19 @@
 				<td th:text="${pustakawan.tanggal_lahir}"></td>
 				<td th:text="${pustakawan.jenis_kelamin}"></td>
 				<td>
-					<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-						<span th:text="${spesialisasi.nama}"></span>
+					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
+					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
+						<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+							<span th:text="${spesialisasi.nama}"></span>
+						</span>
+					</span>
+					<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
+						<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+							<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+								th:text="${spesialisasi.nama} + ','"></span>
+							<span th:if="${spesialisasiStat.index == pustakawan.spesialisasiPustakawan.size()-1}"
+								th:text="${spesialisasi.nama}"></span>
+						</span>
 					</span>
 				</td>
 			</tr>
