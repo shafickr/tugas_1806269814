@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+</head>
+
+<body>
+	<table border="1">
+		<tr>
+			<th>No.</th>
+			<th>Nama</th>
+			<th>NIP</th>
+			<th>Tempat Lahir</th>
+			<th>Tanggal Lahir</th>
+			<th>Jenis Kelamin</th>
+			<th>Spesialisasi</th>
+		</tr>
+		<th:block th:each="pustakawan, iterationStatus : ${daftarPustakawan}">
+			<tr>
+				<td th:text="${iterationStatus.count}"></td>
+				<td th:text="${pustakawan.nama}"></td>
+				<td th:text="${pustakawan.nip}"></td>
+				<td th:text="${pustakawan.tempat_lahir}"></td>
+				<td th:text="${pustakawan.tanggal_lahir}"></td>
+				<td th:text="${pustakawan.jenis_kelamin}"></td>
+				<td>
+					<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+						<span th:text="${spesialisasi.nama}"></span>
+					</span>
+				</td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+
+</html>
