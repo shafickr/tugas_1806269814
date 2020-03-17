@@ -25,7 +25,10 @@
 				<td th:text="${pustakawan.nip}"></td>
 				<td th:text="${pustakawan.tempat_lahir}"></td>
 				<td th:text="${pustakawan.tanggal_lahir}"></td>
-				<td th:text="${pustakawan.jenis_kelamin}"></td>
+				<td>
+					<span th:if="${pustakawan.jenis_kelamin == 1}">Laki-laki</span>
+					<span th:if="${pustakawan.jenis_kelamin == 2}">Perempuan</span>
+				</td>
 				<td>
 					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
 					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
