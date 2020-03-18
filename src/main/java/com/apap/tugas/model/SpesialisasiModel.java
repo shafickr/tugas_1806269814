@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -64,7 +65,8 @@ public class SpesialisasiModel implements Serializable {
 		this.deskripsi = deskripsi;
 	}
 
-	@ManyToMany(mappedBy = "spesialisasiPustakawan", fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "spasialisasiPustakawan", joinColumns = @JoinColumn(name = "spesialisasi_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pustakawan_id", referencedColumnName = "id"))
 	private List<PustakawanModel> daftarPustakawan;
 
 	public List<PustakawanModel> getDaftarPustakawan() {
@@ -74,5 +76,4 @@ public class SpesialisasiModel implements Serializable {
 	public void setDaftarPustakawan(List<PustakawanModel> daftarPustakawan) {
 		this.daftarPustakawan = daftarPustakawan;
 	}
-
 }

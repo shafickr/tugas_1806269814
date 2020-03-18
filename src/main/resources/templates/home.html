@@ -12,63 +12,66 @@
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	<br>
-	<table border="1">
-		<tr style="text-align: center;">
-			<th>No.</th>
-			<th>Nama</th>
-			<th>NIP</th>
-			<th>Tempat Lahir</th>
-			<th>Tanggal Lahir</th>
-			<th>Jenis Kelamin</th>
-			<th>Spesialisasi</th>
-			<th></th>
-		</tr>
-		<th:block th:each="pustakawan, iterationStatus : ${daftarPustakawan}">
-			<tr>
-				<td th:text="${iterationStatus.count}"></td>
-				<td><a th:href="@{'/pustakawan?nip=' + ${pustakawan.nip}}" th:text="${pustakawan.nama}"></a></td>
-				<td th:text="${pustakawan.nip}"></td>
-				<td th:text="${pustakawan.tempat_lahir}"></td>
-				<td th:text="${pustakawan.tanggal_lahir}"></td>
-				<td>
-					<span th:if="${pustakawan.jenis_kelamin == 1}">Laki-laki</span>
-					<span th:if="${pustakawan.jenis_kelamin == 2}">Perempuan</span>
-				</td>
-				<td>
-					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
-					<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
-						<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-							<span th:text="${spesialisasi.nama}"></span>
-						</span>
-					</span>
-					<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
-						<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-							<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
-								th:text="${spesialisasi.nama} + ','"></span>
-							<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
-								th:text="${spesialisasi.nama}">
+	<div class="content-wrapper">
+		<table border="1">
+			<tr style="text-align: center;">
+				<th>No.</th>
+				<th>Nama</th>
+				<th>NIP</th>
+				<th>Tempat Lahir</th>
+				<th>Tanggal Lahir</th>
+				<th>Jenis Kelamin</th>
+				<th>Spesialisasi</th>
+				<th></th>
+			</tr>
+			<th:block th:each="pustakawan, iterationStatus : ${daftarPustakawan}">
+				<tr>
+					<td th:text="${iterationStatus.count}"></td>
+					<td><a th:href="@{'/pustakawan?nip=' + ${pustakawan.nip}}" th:text="${pustakawan.nama}"></a></td>
+					<td th:text="${pustakawan.nip}"></td>
+					<td th:text="${pustakawan.tempat_lahir}"></td>
+					<td th:text="${pustakawan.tanggal_lahir}"></td>
+					<td>
+						<span th:if="${pustakawan.jenis_kelamin == 1}">Laki-laki</span>
+						<span th:if="${pustakawan.jenis_kelamin == 2}">Perempuan</span>
+					</td>
+					<td>
+						<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
+						<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
+							<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+								<span th:text="${spesialisasi.nama}"></span>
 							</span>
 						</span>
-					</span>
-				</td>
-				<td style="padding: 5px;">
-					<a th:href="@{'/'}">
-						<button type="button" class="btn btn-info">Jadwal</button>
-					</a>
-					<a th:href="@{'/pustakawan/update/' + ${pustakawan.id}}">
-						<button type="button" class="btn btn-dark">Ubah</button>
-					</a>
-					<a th:href="@{'/pustakawan/delete/' + ${pustakawan.id}}">
-						<button type="button" class="btn btn-danger">Hapus</button>
-					</a>
-				</td>
-			</tr>
-		</th:block>
-	</table>
-	<br>
-	<a th:href="@{'/pustakawan/tambah'}">
-		<button type="button" class="btn btn-primary">Tambah Pustakawan</button>
-	</a>
+						<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
+							<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+								<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+									th:text="${spesialisasi.nama} + ','"></span>
+								<span
+									th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+									th:text="${spesialisasi.nama}">
+								</span>
+							</span>
+						</span>
+					</td>
+					<td style="padding: 5px;">
+						<a th:href="@{'/'}">
+							<button type="button" class="btn btn-info">Jadwal</button>
+						</a>
+						<a th:href="@{'/pustakawan/update/' + ${pustakawan.id}}">
+							<button type="button" class="btn btn-dark">Ubah</button>
+						</a>
+						<a th:href="@{'/pustakawan/delete/' + ${pustakawan.id}}">
+							<button type="button" class="btn btn-danger">Hapus</button>
+						</a>
+					</td>
+				</tr>
+			</th:block>
+		</table>
+		<br>
+		<a th:href="@{'/pustakawan/tambah'}">
+			<button type="button" class="btn btn-primary">Tambah Pustakawan</button>
+		</a>
+	</div>
 </body>
 
 </html>

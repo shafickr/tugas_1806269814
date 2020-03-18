@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class PustakawanServiceImpl implements PustakawanService {
 	@Autowired
 	private PustakawanDb pustakawanDb;
-	private SpesialisasiDb spesialisasiDb;
 
 	@Override
 	public PustakawanModel getPustakawanById(long id) {
@@ -30,12 +29,12 @@ public class PustakawanServiceImpl implements PustakawanService {
 	}
 
 	@Override
-	public List<SpesialisasiModel> getAllSpesialisasi() {
-		return spesialisasiDb.findAll();
+	public PustakawanModel getPustakawanByNip(String nip) {
+		return pustakawanDb.findByNip(nip);
 	}
 
 	@Override
-	public PustakawanModel getPustakawanByNip(String nip) {
-		return pustakawanDb.findByNip(nip);
+	public void addPustakawan(PustakawanModel pustakawan) {
+		pustakawanDb.save(pustakawan);
 	}
 }

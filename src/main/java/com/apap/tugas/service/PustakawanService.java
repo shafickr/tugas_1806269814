@@ -2,7 +2,6 @@ package com.apap.tugas.service;
 
 import java.util.List;
 import com.apap.tugas.model.PustakawanModel;
-import com.apap.tugas.model.SpesialisasiModel;
 
 public interface PustakawanService {
 	PustakawanModel getPustakawanById(long Id);
@@ -11,5 +10,5 @@ public interface PustakawanService {
 
 	List<PustakawanModel> getAllPustakawan();
 
-	List<SpesialisasiModel> getAllSpesialisasi();
+	void addPustakawan(PustakawanModel pustakawan);
 }

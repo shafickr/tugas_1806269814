@@ -11,43 +11,45 @@
 
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
-	<h5>Nama</h5>
-	<div class="box">
-		<span th:text="${pustakawan.nama}"></span>
-	</div>
-	<h5>NIP</h5>
-	<div class="box">
-		<span th:text="${pustakawan.nip}"></span>
-	</div>
-	<h5>Tempat Lahir</h5>
-	<div class="box">
-		<span th:text="${pustakawan.tempat_lahir}"></span><br>
-	</div>
-	<h5>Tanggal Lahir</h5>
-	<div class="box">
-		<span th:text="${pustakawan.tanggal_lahir}"></span>
-	</div>
-	<h5>Jenis Kelamin</h5>
-	<div class="box">
-		<span th:if="${pustakawan.jenis_kelamin == 1}">Laki-laki</span>
-		<span th:if="${pustakawan.jenis_kelamin == 2}">Perempuan</span>
-	</div>
-	<h5>Spesialisasi</h5>
-	<div class="box">
-		<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
-		<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
-			<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-				<span th:text="${spesialisasi.nama}"></span>
+	<div class="content-wrapper">
+		<h5>Nama</h5>
+		<div class="box">
+			<span th:text="${pustakawan.nama}"></span>
+		</div>
+		<h5>NIP</h5>
+		<div class="box">
+			<span th:text="${pustakawan.nip}"></span>
+		</div>
+		<h5>Tempat Lahir</h5>
+		<div class="box">
+			<span th:text="${pustakawan.tempat_lahir}"></span><br>
+		</div>
+		<h5>Tanggal Lahir</h5>
+		<div class="box">
+			<span th:text="${pustakawan.tanggal_lahir}"></span>
+		</div>
+		<h5>Jenis Kelamin</h5>
+		<div class="box">
+			<span th:if="${pustakawan.jenis_kelamin == 1}">Laki-laki</span>
+			<span th:if="${pustakawan.jenis_kelamin == 2}">Perempuan</span>
+		</div>
+		<h5>Spesialisasi</h5>
+		<div class="box">
+			<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
+			<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
+				<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+					<span th:text="${spesialisasi.nama}"></span>
+				</span>
 			</span>
-		</span>
-		<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
-			<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-				<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
-					th:text="${spesialisasi.nama} + ','"></span>
-				<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
-					th:text="${spesialisasi.nama}"></span>
+			<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
+				<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+					<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+						th:text="${spesialisasi.nama} + ','"></span>
+					<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+						th:text="${spesialisasi.nama}"></span>
+				</span>
 			</span>
-		</span>
+		</div>
 	</div>
 </body>
 

@@ -1,5 +1,7 @@
 package com.apap.tugas.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import com.apap.tugas.model.SpesialisasiModel;
@@ -17,5 +19,16 @@ public class SpesialisasiServiceImpl implements SpesialisasiService {
 	@Override
 	public SpesialisasiModel getSpesialisasiById(long id) {
 		return spesialisasiDb.findById(id);
+	}
+
+	@Override
+	public List<SpesialisasiModel> getAllSpesialisasi() {
+		return spesialisasiDb.findAll();
+	}
+
+	@Override
+	public void addSpesialisasi(SpesialisasiModel spesialisasi) {
+		spesialisasiDb.save(spesialisasi);
+
 	}
 }
