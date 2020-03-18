@@ -40,6 +40,7 @@
 			<div class="form-group">
 				<label>Spesialisasi</label>
 				<select class="form-control" name="spesialisasi_id">
+					<option value="0">Tidak ada</option>
 					<option th:each="spesialisasi : ${spesialisasi}" th:value="${spesialisasi.id}"
 						th:text="${spesialisasi.nama}">
 					</option>

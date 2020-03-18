@@ -35,17 +35,17 @@
 		</div>
 		<h5>Spesialisasi</h5>
 		<div class="box">
-			<span th:if="${pustakawan.spesialisasiPustakawan.size() == 0}">-</span>
-			<span th:if="${pustakawan.spesialisasiPustakawan.size() == 1}">
-				<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
+			<span th:if="${pustakawan.daftarSpesialisasi.size() == 0}">-</span>
+			<span th:if="${pustakawan.daftarSpesialisasi.size() == 1}">
+				<span th:each="spesialisasi : ${pustakawan.daftarSpesialisasi}">
 					<span th:text="${spesialisasi.nama}"></span>
 				</span>
 			</span>
-			<span th:if="${pustakawan.spesialisasiPustakawan.size() > 1}">
-				<span th:each="spesialisasi : ${pustakawan.spesialisasiPustakawan}">
-					<span th:if="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+			<span th:if="${pustakawan.daftarSpesialisasi.size() > 1}">
+				<span th:each="spesialisasi : ${pustakawan.daftarSpesialisasi}">
+					<span th:if="${spesialisasiStat.index != pustakawan.daftarSpesialisasi.size()-1}"
 						th:text="${spesialisasi.nama} + ','"></span>
-					<span th:unless="${spesialisasiStat.index != pustakawan.spesialisasiPustakawan.size()-1}"
+					<span th:unless="${spesialisasiStat.index != pustakawan.daftarSpesialisasi.size()-1}"
 						th:text="${spesialisasi.nama}"></span>
 				</span>
 			</span>
