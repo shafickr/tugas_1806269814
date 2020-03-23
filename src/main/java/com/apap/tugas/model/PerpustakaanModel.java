@@ -33,7 +33,7 @@ public class PerpustakaanModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 

@@ -1,5 +1,7 @@
 package com.apap.tugas.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import com.apap.tugas.model.PerpustakaanModel;
@@ -17,5 +19,20 @@ public class PerpustakaanServiceImpl implements PerpustakaanService {
 	@Override
 	public PerpustakaanModel getPerpustakaanById(int id) {
 		return perpustakaanDb.findById(id);
+	}
+
+	@Override
+	public List<PerpustakaanModel> getAllPerpustakaan() {
+		return perpustakaanDb.findAll();
+	}
+
+	@Override
+	public void addPerpustakaan(PerpustakaanModel perpustakaan) {
+		perpustakaanDb.save(perpustakaan);
+	}
+
+	@Override
+	public void deletePerpustakaan(int id) {
+		perpustakaanDb.delete(this.getPerpustakaanById(id));
 	}
 }
