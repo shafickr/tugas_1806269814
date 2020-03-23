@@ -55,4 +55,35 @@ public class PustakawanPlacementModel implements Serializable {
 		this.hari = hari;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((perpustakaan == null) ? 0 : perpustakaan.hashCode());
+		result = prime * result + ((pustakawan == null) ? 0 : pustakawan.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PustakawanPlacementModel other = (PustakawanPlacementModel) obj;
+		if (perpustakaan == null) {
+			if (other.perpustakaan != null)
+				return false;
+		} else if (!perpustakaan.equals(other.perpustakaan))
+			return false;
+		if (pustakawan == null) {
+			if (other.pustakawan != null)
+				return false;
+		} else if (!pustakawan.equals(other.pustakawan))
+			return false;
+		return true;
+	}
+
 }

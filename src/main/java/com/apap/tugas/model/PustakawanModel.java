@@ -3,7 +3,9 @@ package com.apap.tugas.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,13 +27,13 @@ import javax.validation.constraints.Size;
 public class PustakawanModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -97,26 +99,49 @@ public class PustakawanModel implements Serializable {
 		this.jenis_kelamin = jenis_kelamin;
 	}
 
-	@OneToMany(mappedBy = "pustakawan", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private List<PustakawanPlacementModel> pustakawanPlacement;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "spesialisasi_pustakawan", joinColumns = {
+			@JoinColumn(name = "pustakawan_id") }, inverseJoinColumns = { @JoinColumn(name = "spesialisasi_id") })
+	private Set<SpesialisasiModel> daftarSpesialisasi = new HashSet<>();
 
-	public List<PustakawanPlacementModel> getPustakawanPlacement() {
-		return this.pustakawanPlacement;
-	}
-
-	public void setPustakawanPlacement(List<PustakawanPlacementModel> pustakawanPlacement) {
-		this.pustakawanPlacement = pustakawanPlacement;
-	}
-
-	@ManyToMany(mappedBy = "daftarPustakawan", fetch = FetchType.LAZY)
-	private List<SpesialisasiModel> daftarSpesialisasi;
-
-	public List<SpesialisasiModel> getDaftarSpesialisasi() {
+	public Set<SpesialisasiModel> getDaftarSpesialisasi() {
 		return this.daftarSpesialisasi;
 	}
 
-	public void setDaftarSpesialisasi(List<SpesialisasiModel> daftarSpesialisasi) {
+	public void setDaftarSpesialisasi(Set<SpesialisasiModel> daftarSpesialisasi) {
 		this.daftarSpesialisasi = daftarSpesialisasi;
 	}
 
+	@OneToMany(mappedBy = "pustakawan", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private Set<PustakawanPlacementModel> pustakawanPlacement = new HashSet<>();
+
+	public Set<PustakawanPlacementModel> getPustakawanPlacement() {
+		return this.pustakawanPlacement;
+	}
+
+	public void setPustakawanPlacement(Set<PustakawanPlacementModel> pustakawanPlacement) {
+		this.pustakawanPlacement = pustakawanPlacement;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PustakawanModel other = (PustakawanModel) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

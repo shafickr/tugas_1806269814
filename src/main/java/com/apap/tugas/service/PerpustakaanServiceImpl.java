@@ -15,7 +15,7 @@ public class PerpustakaanServiceImpl implements PerpustakaanService {
 	private PerpustakaanDb perpustakaanDb;
 
 	@Override
-	public PerpustakaanModel getPerpustakaanById(long id) {
+	public PerpustakaanModel getPerpustakaanById(int id) {
 		return perpustakaanDb.findById(id);
 	}
 }

@@ -16,3 +16,7 @@ h5 {
 table tr th {
 	padding: 0 10px;
 }
+table tr td {
+	padding: 0 10px;
+	text-align: center;
+}

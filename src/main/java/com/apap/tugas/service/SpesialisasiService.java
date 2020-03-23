@@ -3,9 +3,10 @@ package com.apap.tugas.service;
 import com.apap.tugas.model.SpesialisasiModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SpesialisasiService {
-	SpesialisasiModel getSpesialisasiById(long Id);
+	Optional<SpesialisasiModel> getSpesialisasiById(int id);
 
 	List<SpesialisasiModel> getAllSpesialisasi();
 

@@ -4,11 +4,15 @@ import java.util.List;
 import com.apap.tugas.model.PustakawanModel;
 
 public interface PustakawanService {
-	PustakawanModel getPustakawanById(long Id);
+	PustakawanModel getPustakawanById(int id);
 
 	PustakawanModel getPustakawanByNip(String nip);
 
 	List<PustakawanModel> getAllPustakawan();
 
 	void addPustakawan(PustakawanModel pustakawan);
+
+	void updatePustakawan(int id, PustakawanModel pustakawan);
+
+	void deletePustakawan(int id);
 }

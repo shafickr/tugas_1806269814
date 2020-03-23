@@ -19,7 +19,7 @@ public class PustakawanServiceImpl implements PustakawanService {
 	private PustakawanDb pustakawanDb;
 
 	@Override
-	public PustakawanModel getPustakawanById(long id) {
+	public PustakawanModel getPustakawanById(int id) {
 		return pustakawanDb.findById(id);
 	}
 
@@ -36,5 +36,22 @@ public class PustakawanServiceImpl implements PustakawanService {
 	@Override
 	public void addPustakawan(PustakawanModel pustakawan) {
 		pustakawanDb.save(pustakawan);
+	}
+
+	@Override
+	public void updatePustakawan(int id, PustakawanModel pustakawan) {
+		PustakawanModel oldPustakawan = getPustakawanById(id);
+		oldPustakawan.setNama(pustakawan.getNama());
+		oldPustakawan.setNip(pustakawan.getNip());
+		oldPustakawan.setTempat_lahir(pustakawan.getTempat_lahir());
+		oldPustakawan.setTanggal_lahir(pustakawan.getTanggal_lahir());
+		oldPustakawan.setJenis_kelamin(pustakawan.getJenis_kelamin());
+		oldPustakawan.setDaftarSpesialisasi(pustakawan.getDaftarSpesialisasi());
+	}
+
+	@Override
+	public void deletePustakawan(int id) {
+		pustakawanDb.delete(this.getPustakawanById(id));
+
 	}
 }
