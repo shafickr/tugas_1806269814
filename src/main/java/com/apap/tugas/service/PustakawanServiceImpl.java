@@ -11,6 +11,7 @@ import com.apap.tugas.repository.SpesialisasiDb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @Service
 @Transactional
@@ -53,5 +54,11 @@ public class PustakawanServiceImpl implements PustakawanService {
 	public void deletePustakawan(int id) {
 		pustakawanDb.delete(this.getPustakawanById(id));
 
+	}
+
+	@Override
+	public void addJadwal(int id, PustakawanModel updatedPustakawan) {
+		PustakawanModel pustakawan = this.getPustakawanById(id);
+		pustakawan.setPustakawanPlacement(updatedPustakawan.getPustakawanPlacement());
 	}
 }
